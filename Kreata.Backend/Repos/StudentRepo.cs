@@ -23,5 +23,15 @@ namespace Kreata.Backend.Repos
             return await _dbSet!
                 .FindByCondition<Student>(s =>s.SchoolYear==schoolYear && s.SchoolClass==schoolClassType).ToListAsync();
         }
+
+        public Task<int> GetNumberOfStudentByYearAsync(int year)
+        {
+            return _dbSet!.CountAsync(s => s.BirthsDay.Year == year);
+        }
+
+        public Task<int> GetNumberOfStudentByYearAndMonthQueryAsync(int year, int month)
+        {
+            return _dbSet!.CountAsync(s => s.BirthsDay.Year == year && s => s.BirthsDay.Month == month);
+        }
     }
 }

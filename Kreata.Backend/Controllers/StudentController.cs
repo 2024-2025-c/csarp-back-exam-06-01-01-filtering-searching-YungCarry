@@ -24,8 +24,18 @@ namespace Kreata.Backend.Controllers
         [HttpGet("NumberOFStudentByYear/{year}")]
         public async Task<IActionResult> GetNumberOFStudentByYear(int year)
         {
-            return Ok(await _studentRepo.GetNumberOfStudentByYear(year));
+            return Ok(await _studentRepo.GetNumberOfStudentByYearAsync(year));
         }
+
+        
+
+        
+        [HttpGet("NumberOfStudentByYearAndMonthQuery/{year}/{month}")]
+        public async Task<IActionResult> GetNumberOFStudentByYearAndMonthQuery(int year, int month)
+        {
+            return Ok(await _studentRepo.GetNumberOfStudentByYearAsync(year, month));
+        }
+
 
     }
 }
